@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long roleId;
     private String roleName;
     
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "roles")
     private List<User> users;
     
 }

@@ -2,31 +2,42 @@ package com.main.ads.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.main.ads.model.Patient;
+import com.main.ads.repository.PatientRepository;
 import com.main.ads.service.PatientService;
 
+@Service
 public class PatientServiceImpl implements PatientService {
+    @Autowired
+    PatientRepository patientRepository;
+
     @Override
-    public List<com.main.ads.model.Patient> getAllPatients() {
-        return null;
+    public List<Patient> getAllPatients() {
+        return patientRepository.findAll();
     }
 
     @Override
-    public com.main.ads.model.Patient addNewPatient(com.main.ads.model.Patient newPatient) {
-        return null;
+    public Patient addNewPatient(Patient newPatient) {
+        return patientRepository.save(newPatient);
     }
 
     @Override
-    public com.main.ads.model.Patient getPatientId(Long patientId) {
-        return null;
+    public Patient getPatientId(Long patientId) {
+        return patientRepository.findById(patientId)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + patientId));
     }
 
     @Override
-    public com.main.ads.model.Patient updatePatient(com.main.ads.model.Patient editedPublished) {
-        return null;
+    public Patient updatePatient(Patient editedPublished) {
+        return patientRepository.save(editedPublished);
     }
 
     @Override
     public void deletePatientById(Long patientId) {
+        patientRepository.deleteById(patientId);
         
     }
     

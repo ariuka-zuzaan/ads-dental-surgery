@@ -9,10 +9,10 @@ public interface AddressService {
 
         Address addNewAddress(Address newAddress);
     
-        Address getAddressId(Long AddressId);
+        Address getAddressId(Integer AddressId);
     
         Address updateAddress(Address editedPublished);
     
-        void deleteAddressById(Long AddressId);
+        void deleteAddressById(Integer AddressId);
 
 }

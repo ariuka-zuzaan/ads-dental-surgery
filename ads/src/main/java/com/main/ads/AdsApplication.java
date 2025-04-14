@@ -1,9 +1,7 @@
 package com.main.ads;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.concurrent.Flow.Publisher;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -52,19 +50,49 @@ public class AdsApplication implements CommandLineRunner {
         addressService.addNewAddress(address);
 
         // Create Surgery with Address
-        Surgery surgery = new Surgery("S001", address);
-        surgeryService.addNewSurgery(surgery);
+        Surgery surgery1 = new Surgery("S15", address);
+		Surgery surgery2 = new Surgery("S10", address);
+		Surgery surgery3 = new Surgery("S13", address);
+        surgeryService.addNewSurgery(surgery1);
+		surgeryService.addNewSurgery(surgery2);
+		surgeryService.addNewSurgery(surgery3);
 
         // Create Patient
-        Patient patient = new Patient("Alice Smith", "555-1234", "alice@example.com", address);
+        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", address);
+		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", address);
+		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", address);
+		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", address);
         patientService.addNewPatient(patient);
+		patientService.addNewPatient(patient2);
+		patientService.addNewPatient(patient3);
+		patientService.addNewPatient(patient4);
 
         // Create Dentist (Doctor)
-        Dentist dentist = new Dentist("Dr. John", "Doe", "Orthodontist");
+        Dentist dentist = new Dentist("Tony", "Smith", "Orthodontist");
+		Dentist dentist2 = new Dentist("Helen", "PearsonDoe", "Orthodontist");
+		Dentist dentist3 = new Dentist("Robin", "Plevin", "Orthodontist");
         dentistService.addNewDentist(dentist);
 
+		dentistService.addNewDentist(dentist2);
+		dentistService.addNewDentist(dentist3);
+	
+		// Create Appointment
        
-		Appointment appointment = new Appointment(patient, dentist, surgery, LocalDate.parse("2025-04-14"), LocalTime.parse("10:00"));
+		Appointment appointment = new Appointment(patient, dentist, surgery1, LocalDate.parse("12-Sep-13"), LocalTime.parse("10:00"));
+		Appointment appointment2 = new Appointment(patient2, dentist2, surgery2, LocalDate.parse("12-Sep-13"), LocalTime.parse("14:00"));
+		Appointment appointment3 = new Appointment(patient3, dentist2, surgery2, LocalDate.parse("12-Sep-13"), LocalTime.parse("12:00"));
+		Appointment appointment4 = new Appointment(patient3, dentist3, surgery1, LocalDate.parse("14-Sep-13"), LocalTime.parse("16:30"));
+		Appointment appointment5 = new Appointment(patient4, dentist3, surgery3, LocalDate.parse("15-Sep-13"), LocalTime.parse("18:00"));
+       
         appointmentService.addNewAppointment(appointment);
+		appointmentService.addNewAppointment(appointment2);
+		appointmentService.addNewAppointment(appointment3);
+		appointmentService.addNewAppointment(appointment4);
+		appointmentService.addNewAppointment(appointment5);
+		// Print all appointments
+		System.out.println("All Appointments:");
+		appointmentService.getAllAppointments().forEach(System.out::println);
+
+
 	}
 }

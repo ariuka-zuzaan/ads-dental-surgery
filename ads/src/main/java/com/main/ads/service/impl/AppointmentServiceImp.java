@@ -1,12 +1,17 @@
 package com.main.ads.service.impl;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.main.ads.model.Appointment;
 import com.main.ads.repository.AppointmentRepositery;
 import com.main.ads.service.AppointmentService;
 
+@Service
 public class AppointmentServiceImp implements AppointmentService {
-
+    @Autowired
     public AppointmentRepositery appointmentRepository;
 
     public AppointmentServiceImp(AppointmentRepositery appointmentRepository) {
@@ -37,8 +42,8 @@ public class AppointmentServiceImp implements AppointmentService {
 
     @Override
     public void deleteAppointmentById(Long AppointmentId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAppointmentById'");
+
+        appointmentRepository.deleteById(AppointmentId);
     }
     
 }
