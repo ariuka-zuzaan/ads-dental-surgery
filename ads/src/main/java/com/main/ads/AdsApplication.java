@@ -17,6 +17,7 @@ import com.main.ads.service.AppointmentService;
 import com.main.ads.service.DentistService;
 import com.main.ads.service.PatientService;
 import com.main.ads.service.SurgeryService;
+import com.main.ads.service.impl.SurgeryServiceImpl;
 
 
 @SpringBootApplication
@@ -46,19 +47,23 @@ public class AdsApplication implements CommandLineRunner {
 	
 	@Override
     public void run(String... args) throws Exception {
-		Address address = new Address("123 Main St", "Cityville", "CA", "12345");
-        addressService.addNewAddress(address);
+		System.out.println("Hello Data Persistence using Spring Data JPA");
+		
+		Address address = new Address("123 Main St", "Cityville", "IA", "12345");
+        address = addressService.addNewAddress(address);
+
+		System.out.println("Address is added: " + address.getAddressId());
 
         // Create Surgery with Address
         Surgery surgery1 = new Surgery("S15", address);
-		Surgery surgery2 = new Surgery("S10", address);
-		Surgery surgery3 = new Surgery("S13", address);
-        surgeryService.addNewSurgery(surgery1);
-		surgeryService.addNewSurgery(surgery2);
-		surgeryService.addNewSurgery(surgery3);
+		// Surgery surgery2 = new Surgery("S10", address);
+		// Surgery surgery3 = new Surgery("S13", address);
+        System.out.println("Surgery is added: " + surgeryService.addNewSurgery(surgery1));
+		// surgeryService.addNewSurgery(surgery2);
+		// surgeryService.addNewSurgery(surgery3);
 
         // Create Patient
-        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", address);
+       /*  Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", address);
 		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", address);
 		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", address);
 		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", address);
@@ -91,7 +96,7 @@ public class AdsApplication implements CommandLineRunner {
 		appointmentService.addNewAppointment(appointment5);
 		// Print all appointments
 		System.out.println("All Appointments:");
-		appointmentService.getAllAppointments().forEach(System.out::println);
+		appointmentService.getAllAppointments().forEach(System.out::println); */
 
 
 	}

@@ -21,17 +21,17 @@ public class Patient {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", unique = true, nullable = true)
-    private Address address;
+    private Address primaryAddress;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
     // Constructors, getters, and setters
-    public Patient(String name, String phoneNumber, String email, Address address) {
+    public Patient(String name, String phoneNumber, String email, Address primaryAddress) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.address = address;
+        this.primaryAddress = primaryAddress;
     }
     
 }

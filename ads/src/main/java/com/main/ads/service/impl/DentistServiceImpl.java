@@ -10,9 +10,12 @@ import com.main.ads.repository.DentistRepository;
 import com.main.ads.service.DentistService; // Ensure the interface is imported
 
 @Service
-public class DentistServiceImp implements DentistService {
-    @Autowired
+public class DentistServiceImpl implements DentistService {
+
     DentistRepository dentistRepository;
+    public DentistServiceImpl(DentistRepository dentistRepository) {
+        this.dentistRepository = dentistRepository;
+    }
 
     @Override
     public List<Dentist> getAllDentists() {

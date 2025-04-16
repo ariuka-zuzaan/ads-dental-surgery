@@ -10,11 +10,11 @@ import com.main.ads.repository.AppointmentRepositery;
 import com.main.ads.service.AppointmentService;
 
 @Service
-public class AppointmentServiceImp implements AppointmentService {
-    @Autowired
+public class AppointmentServiceImpl implements AppointmentService {
+    
     public AppointmentRepositery appointmentRepository;
 
-    public AppointmentServiceImp(AppointmentRepositery appointmentRepository) {
+    public AppointmentServiceImpl(AppointmentRepositery appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }
     

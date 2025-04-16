@@ -11,17 +11,17 @@ import lombok.NoArgsConstructor;
 public class Surgery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int surgeryId;
+    private Long surgeryId;
 
     private String surgeryNo;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id", unique = true, nullable = true)
-    private Address address;
+    @JoinColumn(name = "address_id", nullable = true)
+    private Address primaryAddress;
 
-    public Surgery(String surgeryNo, Address address) {
+    public Surgery(String surgeryNo, Address primaryAddress) {
         this.surgeryNo = surgeryNo;
-        this.address = address;
+        this.primaryAddress = primaryAddress;
     }
     
 }
