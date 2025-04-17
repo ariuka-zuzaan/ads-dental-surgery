@@ -8,15 +8,14 @@ import com.main.ads.repository.SurgeryRepository;
 import com.main.ads.service.SurgeryService;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 
 @Service
+@RequiredArgsConstructor
 public class SurgeryServiceImpl implements SurgeryService {
 
-    SurgeryRepository surgeryRepository;
-    public SurgeryServiceImpl(SurgeryRepository surgeryRepository) {
-        this.surgeryRepository = surgeryRepository;
-    }
+    private final SurgeryRepository surgeryRepository;
 
     @Override
     public List<Surgery> getAllSurgerys() {
@@ -26,6 +25,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     @Transactional
     public Surgery addNewSurgery(Surgery newSurgery) {
+        System.out.println("hereee");
         return surgeryRepository.save(newSurgery);
     }
 

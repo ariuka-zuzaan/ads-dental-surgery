@@ -9,6 +9,8 @@ import com.main.ads.model.Appointment;
 import com.main.ads.repository.AppointmentRepositery;
 import com.main.ads.service.AppointmentService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
     

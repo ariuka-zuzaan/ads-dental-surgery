@@ -1,10 +1,12 @@
 package com.main.ads.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "surgeries")
@@ -15,13 +17,13 @@ public class Surgery {
 
     private String surgeryNo;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id", nullable = true)
-    private Address primaryAddress;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    public Surgery(String surgeryNo, Address primaryAddress) {
+    public Surgery(String surgeryNo, Address address) {
         this.surgeryNo = surgeryNo;
-        this.primaryAddress = primaryAddress;
+        this.address = address;
     }
     
 }

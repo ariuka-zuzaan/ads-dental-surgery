@@ -6,13 +6,14 @@ import com.main.ads.model.Address;
 import com.main.ads.repository.AddressRepository;
 import com.main.ads.service.AddressService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
    
-    AddressRepository addressRepository;
-    public AddressServiceImpl(AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
-    }
+    private final AddressRepository addressRepository;
+
     
     @Override
     public java.util.List<Address> getAllAddress() {
