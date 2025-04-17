@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.main.ads.model.Surgery;
 
 
-// @Repository
+@Repository
 public interface SurgeryRepository extends JpaRepository<Surgery, Long> {
 }

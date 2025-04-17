@@ -19,7 +19,7 @@ public class Patient {
     private String phoneNumber;
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id", unique = true, nullable = true)
     private Address address;
 

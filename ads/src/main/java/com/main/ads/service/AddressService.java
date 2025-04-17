@@ -9,7 +9,7 @@ public interface AddressService {
 
         Address addNewAddress(Address newAddress);
     
-        Address getAddressId(Long AddressId);
+        Address findAddressById(Long AddressId);
     
         Address updateAddress(Address editedPublished);
     

@@ -17,8 +17,8 @@ public class Surgery {
 
     private String surgeryNo;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "address_id", unique = true, nullable = true)
     private Address address;
 
     public Surgery(String surgeryNo, Address address) {

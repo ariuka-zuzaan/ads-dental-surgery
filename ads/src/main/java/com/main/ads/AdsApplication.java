@@ -49,23 +49,32 @@ public class AdsApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 		System.out.println("Hello Data Persistence using Spring Data JPA");
 		
-		Address address = new Address("123 Main St", "Cityville", "TX", "12345");
-        address = addressService.addNewAddress(address);
+		Address address = new Address("111 Main St", "Fairfield", "IA", "52556");
+		Address address2 = new Address("222 Main St", "Fairfield", "IA", "52556");
+		Address address3 = new Address("333 Main St", "Fairfield", "IA", "52556");
+        Address address4 = new Address("444 Main St", "Fairfield", "IA", "52556");
+		Address address5 = new Address("555 Main St", "Fairfield", "IA", "52556");
+		Address address6 = new Address("66 Main St", "Fairfield", "IA", "52556");
+		Address address7 = new Address("66 Main St", "Fairfield", "IA", "52556");
+        
+		// address = addressService.addNewAddress(address);
+
+		// address = addressService.findAddressById(address.getAddressId());
 
         // Create Surgery with Address
-		Surgery surgery1 = new Surgery("S12", null);
-		Surgery surgery2 = new Surgery("S10", null);
-		Surgery surgery3 = new Surgery("S13", null);
+		Surgery surgery1 = new Surgery("S12", address);
+		Surgery surgery2 = new Surgery("S10", address2);
+		Surgery surgery3 = new Surgery("S13", address3);
 	
         surgery1 = surgeryService.addNewSurgery(surgery1);
 		surgery2 = surgeryService.addNewSurgery(surgery2);
 		surgery3 = surgeryService.addNewSurgery(surgery3);
 
         // Create Patient
-        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", null);
-		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", null);
-		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", null);
-		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", null);
+        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", address4);
+		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", address5);
+		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", address6);
+		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", address7);
         patient = patientService.addNewPatient(patient);
 		patient2 = patientService.addNewPatient(patient2);
 		patient3 = patientService.addNewPatient(patient3);
