@@ -53,7 +53,7 @@ public class AdsApplication implements CommandLineRunner {
         address = addressService.addNewAddress(address);
 
         // Create Surgery with Address
-		Surgery surgery1 = new Surgery("S12", null);
+		Surgery surgery1 = new Surgery("S12", address);
 		Surgery surgery2 = new Surgery("S10", null);
 		Surgery surgery3 = new Surgery("S13", null);
 	

@@ -1,11 +1,12 @@
 package com.main.ads.service;
 import java.util.List;
 
+import com.main.ads.dto.response.AddressResponseDto;
 import com.main.ads.model.Address;
 
 public interface AddressService {
 
-        List<Address> getAllAddress();
+        List<AddressResponseDto> getAllAddress();
 
         Address addNewAddress(Address newAddress);
     

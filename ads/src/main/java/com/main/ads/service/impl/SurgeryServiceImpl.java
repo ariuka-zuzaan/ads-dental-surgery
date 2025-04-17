@@ -26,6 +26,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Transactional
     public Surgery addNewSurgery(Surgery newSurgery) {
         System.out.println("hereee");
+        
         return surgeryRepository.save(newSurgery);
     }
 

@@ -8,4 +8,5 @@ import com.main.ads.model.Address;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
+    // Optional<Address> findByStreetAndCityAndStateAndZipCode(String street, String city, String state, String zipCode);
 }
