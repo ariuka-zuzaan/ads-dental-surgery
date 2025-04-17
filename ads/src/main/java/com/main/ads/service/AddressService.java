@@ -5,14 +5,14 @@ import com.main.ads.model.Address;
 
 public interface AddressService {
 
-        List<Address> getAllAddresss();
+        List<Address> getAllAddress();
 
         Address addNewAddress(Address newAddress);
     
-        Address getAddressId(Integer AddressId);
+        Address getAddressId(Long AddressId);
     
         Address updateAddress(Address editedPublished);
     
-        void deleteAddressById(Integer AddressId);
+        void deleteAddressById(Long AddressId);
 
 }

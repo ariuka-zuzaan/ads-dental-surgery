@@ -17,6 +17,7 @@ import com.main.ads.service.AppointmentService;
 import com.main.ads.service.DentistService;
 import com.main.ads.service.PatientService;
 import com.main.ads.service.SurgeryService;
+import com.main.ads.service.impl.SurgeryServiceImpl;
 
 
 @SpringBootApplication
@@ -46,43 +47,47 @@ public class AdsApplication implements CommandLineRunner {
 	
 	@Override
     public void run(String... args) throws Exception {
-		Address address = new Address("123 Main St", "Cityville", "CA", "12345");
-        addressService.addNewAddress(address);
+		System.out.println("Hello Data Persistence using Spring Data JPA");
+		
+		Address address = new Address("123 Main St", "Cityville", "TX", "12345");
+        address = addressService.addNewAddress(address);
 
         // Create Surgery with Address
-        Surgery surgery1 = new Surgery("S15", address);
-		Surgery surgery2 = new Surgery("S10", address);
-		Surgery surgery3 = new Surgery("S13", address);
-        surgeryService.addNewSurgery(surgery1);
-		surgeryService.addNewSurgery(surgery2);
-		surgeryService.addNewSurgery(surgery3);
+		Surgery surgery1 = new Surgery("S12", null);
+		Surgery surgery2 = new Surgery("S10", null);
+		Surgery surgery3 = new Surgery("S13", null);
+	
+        surgery1 = surgeryService.addNewSurgery(surgery1);
+		surgery2 = surgeryService.addNewSurgery(surgery2);
+		surgery3 = surgeryService.addNewSurgery(surgery3);
 
         // Create Patient
-        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", address);
-		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", address);
-		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", address);
-		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", address);
-        patientService.addNewPatient(patient);
-		patientService.addNewPatient(patient2);
-		patientService.addNewPatient(patient3);
-		patientService.addNewPatient(patient4);
+        Patient patient = new Patient("Gillian White", "555-1234", "alice@example.com", null);
+		Patient patient2 = new Patient("Jill Bell", "555-1234", "alice@example.com", null);
+		Patient patient3 = new Patient("Ian MacKay", "555-1234", "alice@example.com", null);
+		Patient patient4 = new Patient("John Walker", "555-1234", "alice@example.com", null);
+        patient = patientService.addNewPatient(patient);
+		patient2 = patientService.addNewPatient(patient2);
+		patient3 = patientService.addNewPatient(patient3);
+		patient4 = patientService.addNewPatient(patient4);
 
         // Create Dentist (Doctor)
         Dentist dentist = new Dentist("Tony", "Smith", "Orthodontist");
 		Dentist dentist2 = new Dentist("Helen", "PearsonDoe", "Orthodontist");
 		Dentist dentist3 = new Dentist("Robin", "Plevin", "Orthodontist");
-        dentistService.addNewDentist(dentist);
+        
+		dentist = dentistService.addNewDentist(dentist);
 
-		dentistService.addNewDentist(dentist2);
-		dentistService.addNewDentist(dentist3);
+		dentist2 = dentistService.addNewDentist(dentist2);
+		dentist3 = dentistService.addNewDentist(dentist3);
 	
 		// Create Appointment
        
-		Appointment appointment = new Appointment(patient, dentist, surgery1, LocalDate.parse("12-Sep-13"), LocalTime.parse("10:00"));
-		Appointment appointment2 = new Appointment(patient2, dentist2, surgery2, LocalDate.parse("12-Sep-13"), LocalTime.parse("14:00"));
-		Appointment appointment3 = new Appointment(patient3, dentist2, surgery2, LocalDate.parse("12-Sep-13"), LocalTime.parse("12:00"));
-		Appointment appointment4 = new Appointment(patient3, dentist3, surgery1, LocalDate.parse("14-Sep-13"), LocalTime.parse("16:30"));
-		Appointment appointment5 = new Appointment(patient4, dentist3, surgery3, LocalDate.parse("15-Sep-13"), LocalTime.parse("18:00"));
+		Appointment appointment = new Appointment(patient, dentist, surgery1, LocalDate.parse("2013-09-12"), LocalTime.parse("10:00"));
+		Appointment appointment2 = new Appointment(patient2, dentist2, surgery2, LocalDate.parse("2013-09-12"), LocalTime.parse("14:00"));
+		Appointment appointment3 = new Appointment(patient3, dentist2, surgery2, LocalDate.parse("2013-09-13"), LocalTime.parse("12:00"));
+		Appointment appointment4 = new Appointment(patient3, dentist3, surgery1, LocalDate.parse("2013-09-14"), LocalTime.parse("16:30"));
+		Appointment appointment5 = new Appointment(patient4, dentist3, surgery3, LocalDate.parse("2013-09-15"), LocalTime.parse("18:00"));
        
         appointmentService.addNewAppointment(appointment);
 		appointmentService.addNewAppointment(appointment2);
@@ -90,8 +95,23 @@ public class AdsApplication implements CommandLineRunner {
 		appointmentService.addNewAppointment(appointment4);
 		appointmentService.addNewAppointment(appointment5);
 		// Print all appointments
-		System.out.println("All Appointments:");
-		appointmentService.getAllAppointments().forEach(System.out::println);
+		
+
+		appointmentService.getAllAppointments().forEach(a -> {
+			if(a.getId() == 1){
+				System.out.println("All Appointments:");
+				System.out.println("-----------------------------------------------------");
+				System.out.println("|" + "ID | " + "   Patient   | " + "   Dentist  |" + "Surgery| " + "   Date    | " + "Time | ");
+			}
+			System.out.print("| " + a.getId());
+			System.out.print(" | " + a.getPatient().getName());
+			System.out.print(" | " + a.getDentist().getFirstName() + " " + a.getDentist().getLastName());
+			System.out.print( " | " + a.getSurgery().getSurgeryNo());
+			System.out.print(" | "+ a.getDate());
+			System.out.print(" | "+ a.getTime() + " | ");
+			System.out.println();
+		});
+		System.exit(0);
 
 
 	}

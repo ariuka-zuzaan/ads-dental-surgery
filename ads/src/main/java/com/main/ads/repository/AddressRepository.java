@@ -7,5 +7,5 @@ import com.main.ads.model.Address;
 
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Integer> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 }

@@ -11,8 +11,10 @@ import com.main.ads.service.PatientService;
 
 @Service
 public class PatientServiceImpl implements PatientService {
-    @Autowired
     PatientRepository patientRepository;
+    public PatientServiceImpl(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
 
     @Override
     public List<Patient> getAllPatients() {

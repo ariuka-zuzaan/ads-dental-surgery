@@ -1,19 +1,22 @@
 package com.main.ads.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.ads.model.Address;
 import com.main.ads.repository.AddressRepository;
 import com.main.ads.service.AddressService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class AddressServiceImp implements AddressService {
-    @Autowired
-    AddressRepository addressRepository;
+@RequiredArgsConstructor
+public class AddressServiceImpl implements AddressService {
+   
+    private final AddressRepository addressRepository;
+
     
     @Override
-    public java.util.List<Address> getAllAddresss() {
+    public java.util.List<Address> getAllAddress() {
         return addressRepository.findAll();
     }
 
@@ -23,7 +26,7 @@ public class AddressServiceImp implements AddressService {
     }
 
     @Override
-    public Address getAddressId(Integer addressId) {
+    public Address getAddressId(Long addressId) {
         return addressRepository.findById(addressId)
                 .orElse(null);
     }
@@ -34,7 +37,7 @@ public class AddressServiceImp implements AddressService {
     }
 
     @Override
-    public void deleteAddressById(Integer addressId) {
+    public void deleteAddressById(Long addressId) {
         addressRepository.deleteById(addressId);
         
     }

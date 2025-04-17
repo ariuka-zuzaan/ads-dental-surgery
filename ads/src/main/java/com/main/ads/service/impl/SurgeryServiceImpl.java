@@ -1,19 +1,21 @@
 package com.main.ads.service.impl;
 
-import com.main.ads.service.SurgeryService;
-
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.ads.model.Surgery;
 import com.main.ads.repository.SurgeryRepository;
+import com.main.ads.service.SurgeryService;
+
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
 
 @Service
-public class SurgeryServiceImp implements SurgeryService {
-    @Autowired
-    SurgeryRepository surgeryRepository;
+@RequiredArgsConstructor
+public class SurgeryServiceImpl implements SurgeryService {
+
+    private final SurgeryRepository surgeryRepository;
 
     @Override
     public List<Surgery> getAllSurgerys() {
@@ -21,7 +23,9 @@ public class SurgeryServiceImp implements SurgeryService {
     }
 
     @Override
+    @Transactional
     public Surgery addNewSurgery(Surgery newSurgery) {
+        System.out.println("hereee");
         return surgeryRepository.save(newSurgery);
     }
 
