@@ -1,7 +1,7 @@
 package com.main.ads.dto.response;
 
-public record AddressResponseDto(
-    Integer addressId,
+public record AddressResponse(
+    Long addressId,
     String street,
     String city,
     String state,

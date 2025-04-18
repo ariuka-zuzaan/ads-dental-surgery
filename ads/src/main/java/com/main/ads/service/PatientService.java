@@ -1,18 +1,23 @@
 package com.main.ads.service;
 import java.util.List;
 
+import com.main.ads.dto.request.PatientRequest;
+import com.main.ads.dto.response.PatientResponse;
+import com.main.ads.exception.PatientNotFoundException;
 import com.main.ads.model.Patient;
 
 public interface PatientService {
 
-        List<Patient> getAllPatients();
+        List<PatientResponse> getAllPatients();
 
-        Patient addNewPatient(Patient newPatient);
+        PatientResponse addNewPatient(PatientRequest newPatient);
     
-        Patient getPatientId(Long patientId);
+        Patient getPatientById(Long patientId) throws PatientNotFoundException;
     
-        Patient updatePatient(Patient editedPublished);
+        Patient updatePatient(Long patientId, Patient editedPublished);
     
         void deletePatientById(Long patientId);
+
+        List<Patient>  searchPatient(String searchString);
 
 }
