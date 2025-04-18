@@ -26,6 +26,9 @@ jobs:
 
       - name: Delete Gradle cache
         run: rm -rf ~/.gradle/caches
+
+      - name: Go to directory
+        run: cd ads/
         
       - name: Build with Gradle
         run: ./gradlew clean bootJar
