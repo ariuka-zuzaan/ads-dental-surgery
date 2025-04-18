@@ -23,9 +23,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'microsoft'
-          
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
         run: ./gradlew clean bootJar
