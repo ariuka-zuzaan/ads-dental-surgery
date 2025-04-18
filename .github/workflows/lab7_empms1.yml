@@ -23,14 +23,9 @@ jobs:
         with:
           java-version: '21'
           distribution: 'microsoft'
-
-      - name: Delete Gradle cache
-        run: rm -rf ~/.gradle/caches
-
-      - name: Go to directory
-        run: cd ads/
         
       - name: Build with Gradle
+        working-directory: ads
         run: ./gradlew clean bootJar
 
       - name: Upload artifact for deployment job
