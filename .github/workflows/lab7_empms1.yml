@@ -23,15 +23,16 @@ jobs:
         with:
           java-version: '21'
           distribution: 'microsoft'
-
+        
       - name: Build with Gradle
+        working-directory: ads
         run: ./gradlew clean bootJar
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/build/libs/*.jar'
+          path: '${{ github.workspace }}/ads/build/libs/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
