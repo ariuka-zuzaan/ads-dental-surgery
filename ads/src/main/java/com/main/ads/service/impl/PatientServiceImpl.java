@@ -47,7 +47,7 @@ public class PatientServiceImpl implements PatientService {
                 patientRequest.lastName(), 
                 patientRequest.email(),
                 patientRequest.phoneNumber(),
-                (patientRequest.address()!=null) ? new Address(null,
+                (patientRequest.address()!=null) ? new Address(
                     patientRequest.address().city(),
                     patientRequest.address().state(),
                     patientRequest.address().street(),

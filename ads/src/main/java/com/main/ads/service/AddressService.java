@@ -1,10 +1,10 @@
 package com.main.ads.service;
 import java.util.List;
 
-import com.main.ads.dto.response.AddressResponse;
+import com.main.ads.dto.response.AddressResponse2;
 
 public interface AddressService {
 
-        List<AddressResponse> getAllAddress();
+        List<AddressResponse2> getAllAddress();
 
 }

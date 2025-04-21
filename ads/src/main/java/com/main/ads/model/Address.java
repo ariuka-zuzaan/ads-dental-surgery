@@ -22,13 +22,14 @@ public class Address {
     @Column(length = 16)
     private String zipCode;
 
-    // @OneToOne(mappedBy = "primaryAddress")
-    // private Patient patient;
+    @OneToOne(mappedBy = "address")
+    private Patient patient;
     
-    // @OneToOne(mappedBy = "primaryAddress")
+    // @OneToOne(mappedBy = "address")
     // private Surgery surgery;
 
     public Address(String city, String state, String street, String zipCode) {
+    
         this.street = street;
         this.city = city;
         this.state = state;

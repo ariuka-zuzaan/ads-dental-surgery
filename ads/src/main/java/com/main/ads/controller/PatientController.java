@@ -1,6 +1,7 @@
 package com.main.ads.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +21,15 @@ import com.main.ads.model.Patient;
 import com.main.ads.service.PatientService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/ads/api/v1/patients")
 public class PatientController {
 
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    public PatientController(PatientService patientService) {
-        this.patientService = patientService;
-    }
 
     @GetMapping
     public ResponseEntity<List<PatientResponse>> listPatients() {
